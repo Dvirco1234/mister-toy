@@ -10,9 +10,9 @@ export default {
     },
   },
   mutations: {
-    // setToys(state, { toys }) {
-    //   state.toys = toys
-    // },
+    setToys(state, { toys }) {
+      state.toys = toys
+    },
     // removeToy(state, { id }) {
     //   const idx = state.toys.findIndex((toy) => toy.id === id)
     //   state.toys.splice(idx, 1)
@@ -24,11 +24,11 @@ export default {
     // },
   },
   actions: {
-    // loadToys({ commit }) {
-    //   toyService.query().then((toys) => {
-    //     commit({ type: 'setToys', toys })
-    //   })
-    // },
+    loadToys({ commit }) {
+      toyService.query().then((toys) => {
+        commit({ type: 'setToys', toys })
+      })
+    },
     // removeToy({ commit }, { id }) {
     //   toyService.remove(id).then(() => {
     //     commit({ type: 'removeToy', id })

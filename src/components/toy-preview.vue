@@ -1,17 +1,18 @@
 <template>
-  <li class="car-preview">
+  <li class="toy-preview">
     <custom-card>
       <template #header>
-        <p><span class="fw-bold">Vendor:</span> {{ car.vendor }}</p>
-        <p><span class="fw-bold">Speed:</span> {{ car.speed }}</p>
-        <p><span class="fw-bold">Price:</span> {{ $filters.currencyUSD(car.price) }}</p>
+        <p><span class="fw-bold">Name:</span> {{ toy.name }}</p>
+        <p><span class="fw-bold">Price:</span> {{ $filters.currencyUSD(toy.price) }}</p>
       </template>
-
+        <div class="toy-labels">
+          <span v-for="label in toy.labels"> #{{ label }} </span>
+        </div>
       <template #footer>
         <div class="btn-group">
           <button @click="goToEdit" class="btn btn-primary">edit</button>
           <button @click="goToDetail" class="btn btn-info">details</button>
-          <button @click="removeCar(car.id)" class="btn btn-danger">delete</button>
+          <button @click="removeToy(toy.id)" class="btn btn-danger">delete</button>
         </div>
       </template>
     </custom-card>
@@ -22,23 +23,23 @@
 import customCard from './custom-card.vue'
 
 export default {
-  name: 'car-preview',
+  name: 'toy-preview',
   props: {
-    car: Object,
+    toy: Object,
   },
   components: {
     customCard,
   },
   methods: {
     goToDetail() {
-      this.$router.push(`/car/${this.car.id}`)
+      this.$router.push(`/toy/${this.toy.id}`)
     },
     goToEdit() {
-      this.$router.push(`/car/edit/${this.car.id}`)
+      this.$router.push(`/toy/edit/${this.toy.id}`)
     },
-    removeCar(carId) {
-      this.$emit('removeCar', carId)
-    },
+    // removeToy(toyId) {
+    //   this.$emit('removeToy', toyId)
+    // },
   },
 }
 </script>

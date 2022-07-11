@@ -1,23 +1,23 @@
 <template>
-  <section class="car-filter">
-    <input
+  <section class="toy-filter">
+    <!-- <input
       v-focus
-      v-model="filterBy.vendor"
+      v-model="filterBy.name"
       @input="setFilter"
       type="text"
       class="form-input"
-      placeholder="Search vendor..."
-    />
+      placeholder="Search toy..."
+    /> -->
   </section>
 </template>
 
 <script>
 export default {
-  name: 'car-filter',
+  name: 'toy-filter',
   data() {
     return {
       filterBy: {
-        vendor: '',
+        name: '',
       },
     }
   },

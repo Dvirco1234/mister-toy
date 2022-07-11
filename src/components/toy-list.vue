@@ -1,26 +1,31 @@
 <template>
-  <ul class="car-list clean-list grid gap-1">
-    <car-preview @removeCar="removeCar" v-for="car in cars" :car="car" :key="car.id" />
-  </ul>
+    <ul class="toy-list clean-list grid gap-1">
+        <toy-preview
+            @removeToy="removeToy"
+            v-for="toy in toys"
+            :toy="toy"
+            :key="toy.id"/>
+    </ul>
+    <pre>{{ toys }}</pre>
 </template>
 
 <script>
-import carPreview from './car-preview.vue'
+import toyPreview from './toy-preview.vue'
 
 export default {
-  props: {
-    cars: {
-      type: Array,
-      required: true,
+    props: {
+        toys: {
+            type: Array,
+            required: true,
+        },
     },
-  },
-  components: {
-    carPreview,
-  },
-  methods: {
-    removeCar(carId) {
-      this.$emit('removeCar', carId)
+    components: {
+        toyPreview,
     },
-  },
+    methods: {
+        removeToy(toyId) {
+            this.$emit('removeToy', toyId)
+        },
+    },
 }
 </script>
