@@ -19,6 +19,7 @@ export const toyService = {
     remove,
     save,
     getEmptyToy,
+    getLabels,
 }
 
 function query() {
@@ -34,15 +35,23 @@ function remove(toyId) {
 }
 
 function save(toy) {
-    if (toy.id) return storageService.put(KEY, toy)
+    if (toy._id) return storageService.put(KEY, toy)
     return storageService.post(KEY, toy)
+}
+
+function getLabels() {
+    return labels
 }
 
 function getEmptyToy() {
     return {
-        vendor: '',
-        speed: 0,
+        _id: '',
+        name: '',
         price: 0,
+        labels: [],
+        createdAt: '',
+        inStock: true,
+        reviews: [],
     }
 }
 
@@ -67,5 +76,6 @@ function _createToy(name, price) {
         labels: ['Doll', 'Battery Powered', 'Baby'],
         createdAt: Date.now(),
         inStock: true,
+        reviews: ['this toy is very good!!!', 'Good quality'],
     }
 }

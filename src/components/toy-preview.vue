@@ -6,13 +6,13 @@
         <p><span class="fw-bold">Price:</span> {{ $filters.currencyUSD(toy.price) }}</p>
       </template>
         <div class="toy-labels">
-          <span v-for="label in toy.labels"> #{{ label }} </span>
+          <span v-for="label in toy.labels" :key="label"> #{{ label }} </span>
         </div>
       <template #footer>
         <div class="btn-group">
           <button @click="goToEdit" class="btn btn-primary">edit</button>
           <button @click="goToDetail" class="btn btn-info">details</button>
-          <button @click="removeToy(toy.id)" class="btn btn-danger">delete</button>
+          <button @click="removeToy(toy._id)" class="btn btn-danger">delete</button>
         </div>
       </template>
     </custom-card>
@@ -32,14 +32,14 @@ export default {
   },
   methods: {
     goToDetail() {
-      this.$router.push(`/toy/${this.toy.id}`)
+      this.$router.push(`/toy/${this.toy._id}`)
     },
     goToEdit() {
-      this.$router.push(`/toy/edit/${this.toy.id}`)
+      this.$router.push(`/toy/edit/${this.toy._id}`)
     },
-    // removeToy(toyId) {
-    //   this.$emit('removeToy', toyId)
-    // },
+    removeToy(toyId) {
+      this.$emit('removeToy', toyId)
+    },
   },
 }
 </script>

@@ -5,7 +5,6 @@
     </header>
     <main>
       <slot></slot>
-      <!-- <slot name="default"></slot> -->
     </main>
     <footer>
       <slot name="footer"></slot>

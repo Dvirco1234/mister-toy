@@ -4,7 +4,7 @@
             @removeToy="removeToy"
             v-for="toy in toys"
             :toy="toy"
-            :key="toy.id"/>
+            :key="toy._id"/>
     </ul>
     <pre>{{ toys }}</pre>
 </template>
