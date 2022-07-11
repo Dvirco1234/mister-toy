@@ -1,15 +1,6 @@
 import { storageService } from './storage-service.js'
 import { utilService } from './util-service.js'
 
-const labels = [
-    'On wheels',
-    'Box game',
-    'Art',
-    'Baby',
-    'Doll',
-    'Puzzle',
-    'Outdoor',
-]
 const KEY = 'toysDB'
 _createToys()
 
@@ -50,7 +41,7 @@ function getEmptyToy() {
         price: 0,
         labels: [],
         createdAt: '',
-        inStock: true,
+        inStock: false,
         reviews: [],
     }
 }

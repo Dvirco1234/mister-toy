@@ -30,6 +30,7 @@
             </div>
         </form>
     </section>
+    <pre>{{ labels }}</pre>
 </template>
 
 <script>
@@ -60,6 +61,11 @@ export default {
                 .then(() => {
                     this.$router.push('/toy')
                 })
+        },
+    },
+    computed: {
+        labels() {
+            return this.$store.getters.labels
         },
     },
 }
