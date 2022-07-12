@@ -1,16 +1,22 @@
 <template>
-  <h2>This is an about page</h2>
+    <section class="flex flex-col gap-2 justify-center">
+        <h2>Our stores</h2>
+        <shopsMap class="shops-map"/>
+    </section>
 </template>
 
 <script>
+import shopsMap from '../components/shopsMap.vue'
+
 export default {
-  name: 'about',
-  data() {
-    return {
-    }
-  }
+    name: 'about',
+    data() {
+        return {}
+    },
+    components: {
+        shopsMap,
+    },
 }
 </script>
 
-<style>
-</style>
+<style></style>

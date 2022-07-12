@@ -17,7 +17,7 @@ export default {
             name: '',
             inStock: false,
             labels: [],
-            sortBy: 'createdAt',
+            sortBy: 'createdAt -1',
         },
     },
     getters: {
@@ -29,23 +29,26 @@ export default {
         },
         filteredToys({ filterBy, toys }) {
             if (!toys) return
-
+            return toys
             const regex = new RegExp(filterBy.name, 'i')
             let filteredToys = toys.filter(toy => regex.test(toy.name))
 
-            if (filterBy.inStock) filteredToys = filteredToys.filter(toy => toy.inStock)
+            if (filterBy.inStock)
+                filteredToys = filteredToys.filter(toy => toy.inStock)
 
-            if(filterBy.labels.length) {
+            if (filterBy.labels.length) {
                 filteredToys = filteredToys.filter(toy => {
-                    return toy.labels.some(label => filterBy.labels.indexOf(label) >= 0)
+                    return toy.labels.some(
+                        label => filterBy.labels.indexOf(label) >= 0
+                    )
                 })
             }
 
-            const {sortBy} = filterBy
+            const { sortBy } = filterBy
             // if(sortBy !== 'name') filteredToys.sort((t1, t2) => t1[sortBy] - t2[sortBy])
             // else filteredToys.sort((t1, t2) => t1.name.localeCompare(t2.name))
             filteredToys.sort((t1, t2) => {
-                if(sortBy !== 'name') return t1[sortBy] - t2[sortBy]
+                if (sortBy !== 'name') return t1[sortBy] - t2[sortBy]
                 else return t1.name.localeCompare(t2.name)
             })
             // const startIdx = filterBy.pageIdx * pageSize
@@ -74,7 +77,6 @@ export default {
         },
         setFilter(state, { filterBy }) {
             state.filterBy = filterBy
-            // state.filterBy = { ...filterBy, pageIdx: state.filterBy.pageIdx }
         },
     },
     actions: {
@@ -93,5 +95,11 @@ export default {
                 commit({ type: 'saveToy', toy })
             })
         },
+        setFilter({ commit }, { filterBy }) {
+            toyService.query(filterBy).then(toys => {
+                commit({ type: 'setToys', toys })
+            })
+        },
+
     },
 }

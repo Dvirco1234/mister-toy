@@ -22,6 +22,21 @@
                     class="form-input"
                 />
             </div>
+            <div class="select-labels">
+                <el-select
+                    v-model="toyToEdit.labels"
+                    multiple
+                    collapse-tags
+                    placeholder="Choose labels"
+                >
+                    <el-option
+                        v-for="label in labels"
+                        :key="label"
+                        :label="label"
+                        :value="label"
+                    />
+                </el-select>
+            </div>
             <div class="btn-group">
                 <button @click="saveToy" class="btn btn-info">save</button>
                 <button @click="goBack" class="btn btn-danger-text">

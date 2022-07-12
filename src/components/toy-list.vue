@@ -6,7 +6,7 @@
             :toy="toy"
             :key="toy._id"/>
     </ul>
-    <pre>{{ toys }}</pre>
+    <!-- <pre>{{ toys }}</pre> -->
 </template>
 
 <script>
